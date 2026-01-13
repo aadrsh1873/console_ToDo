@@ -59,7 +59,7 @@ void addinto(vector<task> &storage)
     cout<<"Enter task : ";
     getline(cin,t.content);
 
-    } while (length(t.content) == 0 || t.content ==" ");
+    } while (t.content.length() == 0 || t.content ==" ");
 
     
     t.status = false;
@@ -76,7 +76,26 @@ void deletefrom(vector<task> &storage)
 
 void display(vector<task> &storage)
 {
-    cout<<"Under progress:"<<endl;
+    int task_id = 1;
+    if(storage.empty() == true)
+    {
+        cout<<"No task exist till now."<<endl<<"Are you ready to create some action?"<<endl;
+
+        return ;
+    }
+    else
+    {
+        for(auto &t : storage) 
+        {
+            cout<<"Task id: "<<task_id<<" ";
+            cout<<"Task: "<<t.content<<" ";
+            cout<<"Done? "<<t.status<<" ";
+
+            task_id++;
+        }
+        cout<<endl;
+
+    }
 }
 void markdone(vector<task> &storage)
 {
