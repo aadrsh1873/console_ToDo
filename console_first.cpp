@@ -7,6 +7,10 @@ struct task
    bool status;
 };
 
+char booltoYN(&t.status)
+{
+    return value ? 'y' : 'n';
+}
 void addinto(vector<task> &storage);
 void deletefrom(vector<task> &storage);
 void display(vector<task> &storage);
@@ -80,20 +84,21 @@ void display(vector<task> &storage)
     if(storage.empty() == true)
     {
         cout<<"No task exist till now."<<endl<<"Are you ready to create some action?"<<endl;
-
+        
         return ;
     }
     else
     {
+        cout<<"Task id | Task | Status "<<endl;
         for(auto &t : storage) 
         {
-            cout<<"Task id: "<<task_id<<" ";
-            cout<<"Task: "<<t.content<<" ";
-            cout<<"Done? "<<t.status<<" ";
-
+            cout<<task_id<<" ";
+            cout<<" "<<t.content<<" ";
+            cout<<" "<<booltoYN(t.status)<<" ";
+        cout<<endl;
             task_id++;
         }
-        cout<<endl;
+
 
     }
 }
